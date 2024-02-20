@@ -1,0 +1,111 @@
+.main{
+  overflow: hidden;
+  height: 100vh;
+  
+  /* background: linear-gradient(136deg, #0972BE 27.28%, #36aad0 87.37%)
+  ; */
+  border-radius: 35px;
+  position: relative;
+
+}
+
+.main::after{
+  content: "";
+  width:115% ;
+  height: 160%;
+  border-radius:60% ;
+  background-color: #0972BE;
+  position: absolute;
+  top: -45%;
+  right: -70%;
+  z-index: -1;
+}
+.main-page{
+  font-family: Inter;
+  margin: 105px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main-page .content{
+  text-align: center;
+  
+}
+.main-page .content p {
+color: #000;
+font-size: 24px;
+font-style: normal;
+font-weight: 500;
+line-height: 21.146px; /* 58.739% */
+letter-spacing: 26.28px;
+text-transform: uppercase;
+}
+.main-page .content h1{
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 23.947px; /* 20.853% */
+  /* letter-spacing: -2.594px; */
+  letter-spacing: 3.594px;
+  text-transform: uppercase;
+}
+.main-page .content p{
+  color: #42454A;
+  font-family: Inter;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 31.236px; /* 97.613% */
+  letter-spacing: 0.32px;
+}
+.main-img img {
+  margin-top: 20px;
+  width: 450px;
+  
+}
+
+.main-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn {
+  outline: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  /* background: #40B3A2; */
+  background: #0972BE;
+  min-width: 200px;
+  border: 0;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+  box-sizing: border-box;
+  padding: 16px 20px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.btn:hover {
+  opacity: .95;
+}
+
+.btn .animation {
+  border-radius: 100%;
+  animation: ripple 0.6s linear infinite;
+}
+
+@keyframes ripple {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.1), 0 0 0 20px rgba(255, 255, 255, 0.1), 0 0 0 40px rgba(255, 255, 255, 0.1), 0 0 0 60px rgba(255, 255, 255, 0.1);
+  }
+
+  100% {
+    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.1), 0 0 0 40px rgba(255, 255, 255, 0.1), 0 0 0 60px rgba(255, 255, 255, 0.1), 0 0 0 80px rgba(255, 255, 255, 0);
+  }
+}
