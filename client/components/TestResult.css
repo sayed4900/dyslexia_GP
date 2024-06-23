@@ -1,0 +1,12 @@
+h1{
+  text-align: center;
+  margin:20px;
+  color: #007bff;
+}
+h2 span{
+  color: black;
+}
+.content p { 
+  margin: 10px;
+  font-size: 20px;
+}

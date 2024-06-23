@@ -1,34 +1,37 @@
-import  { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { baseUrl } from '../src/utils/services';
 
 import './Handwriting.css'
 import '../src/style.css'
 import Header from './Header';
+import { useNavigate } from 'react-router-dom';
 
 const HandwritingTest = () => {
   
+  const navigate = useNavigate();
+
   const [audio, setAudio] = useState("");
-  // eslint-disable-next-line no-unused-vars
   const [audioText, setAudioText] = useState("");
 
-
-  useEffect(()=>{
-    
-    const getRandomAudio = async() =>{
+  useEffect(() => {
+    const getRandomAudio = async () => {
       try {
-        const res = await axios.get(`${baseUrl}/api/handwritten/random-audio`);
-        console.log(res);
+        const res = await axios.get(`${baseUrl}/handwritten/random-audio`);
+        console.log('API Response:', res);
         setAudio(res.data.audioUrl);
         setAudioText(res.data.text);
       } catch (error) {
-        console.log(error);
+        console.log('API Error:', error);
       }
-    }
+    };
     getRandomAudio();
-    
-  },[])
+  }, []);
   
+  const handleContinue = () => {
+    navigate('/test/hand-writing/continue',  { state: { audioText } });
+  };
+
   return (
     <div className='container'>
       <Header/> 
@@ -38,12 +41,14 @@ const HandwritingTest = () => {
           <h2>Please listen then write</h2>
         </div>
         <div className='preduction-result'>
-          <audio controls>
-            <source src={audio} type="audio/mp3" />
-            Your browser does not support the audio element.
-          </audio>
+          {audio && (
+            <audio controls>
+              <source src={audio} type="audio/mp3" />
+              Your browser does not support the audio element.
+            </audio>
+          )}
         </div>
-        <button>Continue</button>
+        <button onClick={handleContinue}>Continue</button>
       </div>
     </div>
   );

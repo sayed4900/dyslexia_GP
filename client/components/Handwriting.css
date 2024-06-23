@@ -94,7 +94,7 @@
   width: 20px;
 }
 .pick-img{
-  background-color: #0972BE;
+  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -106,8 +106,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 10px;
 }
 
+.imgs-uploads div{
+  margin-top: 10px;
+}
 /* CSS */
 .prediction-result {
   margin-top: 20px;

@@ -1,11 +1,11 @@
 // DyslexiaTests.jsx
-import { Navigate, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import './DyslexiaTests.css';
 import Header from './Header';
 
 const DyslexiaTests = () => {
   const tests = [
-    { name: 'Handwriting', color: '#1E88E5' },
+    { name: 'Handwriting', testLink:"hand-writing", color: '#1E88E5' },
     { name: 'Eye Tracking', color: '#AB47BC' },
     { name: 'EEG-Based Brain Activity', color: '#8E24AA' },
     { name: 'MRI-Based Brain Imaging', color: '#00ACC1' },
@@ -14,9 +14,9 @@ const DyslexiaTests = () => {
 
     const navigate = useNavigate();
 
-   const handleTestClick = (testName) => {
-    // Navigate(`/test/${testName}`);
-    navigate('/hand-written')
+  const handleTestClick = (testName) => {
+    
+    navigate(`/test/${testName}`)
   };
 
   return (
@@ -29,8 +29,8 @@ const DyslexiaTests = () => {
             key={index}
             className="test-card"
             style={{ backgroundColor: test.color }}
-            onClick={() => handleTestClick(test.name)}
-          >          {/* <span className="lock-icon">🔒</span> */}
+            onClick={() => handleTestClick(test.testLink)}
+          >
           <div className='lock-imgs'>
             <img className='ellipse' src="../public/imgs/Ellipse.png" alt="" />
             <img className='lock' src="../public/imgs/lock.png" alt="" />

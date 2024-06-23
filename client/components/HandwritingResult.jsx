@@ -5,14 +5,18 @@ import './Handwriting.css'
 import Header from './Header'
 import { baseUrl } from '../src/utils/services';
 import axios from 'axios';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const HandwritingResult = () => {
+    const navigate = useNavigate();
+
+  const location = useLocation();
+  const { audioText } = location.state || {};
 
   const [selectedFile, setSelectedFile] = useState(null);
   const { handleImageChange, imgUrl } = showImage();
 
-  
-
+  const[loadingResult, setIsLoadingResult] = useState(false);
 
   
   const handleFileChange = (event) => {
@@ -33,15 +37,8 @@ const HandwritingResult = () => {
         })
         
         console.log(res.data)
-        
+        console.log(audioText)
 
-        // if ("randomLetter" === res.data) {
-        //   setShowPopup(true);
-        //   setPopupMessage('You wrote the right letter!');
-        // } else {
-        //   setShowPopup(true);
-        //   setPopupMessage('You did not write the right letter.');
-        // }
       } catch (error) {
         console.log(error)
         // setPredictionResult(null)
@@ -51,6 +48,36 @@ const HandwritingResult = () => {
       console.error('Please select an image before uploading.');
     }
   };
+
+  const handleResult = async() => {
+    if (!selectedFile) {
+      alert("Please upload a file");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('file', selectedFile);
+    try {
+      setIsLoadingResult(true);
+      const res = await axios.post(`${baseUrl}/handwritten/predict-hand`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      console.log(res.data.parsedText);
+      console.log(audioText)
+      let result = "Normal";
+      if (res.data.parsedText !== audioText)
+        result = "NotNormal"
+
+      setIsLoadingResult(false);
+      navigate('/result', { state: { parsedText: res.data.parsedText,audioText,testType:"Handwriting",result } });
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
 
   return (
@@ -78,8 +105,11 @@ const HandwritingResult = () => {
             {/* <img src='../public/imgs/cameraImg.png'/> */}
             <button onClick={handleImageUpload}>Upload Image</button>
           </div>
-      
-          <button>Reuslt</button>
+          <div>
+            <button onClick={handleResult}> 
+              {loadingResult ? "Loading Your result" : "Get Reuslt"} </button>
+          </div>
+            
         </div>
       </div>
     </div>
