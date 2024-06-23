@@ -15,7 +15,7 @@ const Main = () => {
         </div>
       </div>
       <div className='main-btn'>
-        <Link to={"/hand-written"}>
+        <Link to={"/signup"}>
         <button className="btn">
           <i className="animation"></i>Get Started<i className="animation"></i>
         </button>

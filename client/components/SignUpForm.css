@@ -1,0 +1,79 @@
+.signup-container {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  /* width: 300px; */
+  text-align: left;
+}
+
+.container h2 {
+  margin: 30px;
+  color: #007bff;
+  text-align: center;
+}
+
+.signup-form .form-group {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.signup-form .form-group label {
+  margin-bottom: 8px;
+  color: #007bff;
+  font-size: 20px;
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 285px;
+  
+}
+
+.signup-form .form-group input {
+  width: 50%;
+  padding: 8px;
+}
+
+.auth-buttons{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.signup-button {
+  background-color: #0047AB;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 50%;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.google-signup-button {
+  background-color: white;
+  color: black;
+  border: 1px solid #ddd;
+  padding: 10px;
+  width: 50%;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.google-signup-button img {
+  margin-right: 10px;
+}
+
+.signup-form p {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.signup-form p a {
+  color: #0047AB;
+  text-decoration: none;
+}
+
+.signup-form p a:hover {
+  text-decoration: underline;
+}

@@ -70,12 +70,12 @@ const HandwritingResult = () => {
         <div className='imgs-uploads'>
           <input type="file" accept="image/*" onChange={handleFileChange} />
           <div className='pick-img'>
-            <img src='../public/imgs/solar_gallery-bold.png'/>
+            {/* <img src='../public/imgs/solar_gallery-bold.png'/> */}
             <button onClick={handleImageUpload}>Select an Image</button>
           </div>
 
           <div className='pick-img'>
-            <img src='../public/imgs/cameraImg.png'/>
+            {/* <img src='../public/imgs/cameraImg.png'/> */}
             <button onClick={handleImageUpload}>Upload Image</button>
           </div>
       
