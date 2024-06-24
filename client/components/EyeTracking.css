@@ -1,0 +1,69 @@
+/* WebcamCapture.css */
+.webcam-container {
+  position: relative;
+  width: 640px;
+  margin: auto;
+  text-align: center;
+}
+
+.eye-text{
+  font-size: 20px;
+  margin:10px;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.screenshots {
+  margin-top: 20px;
+}
+
+.screenshots img {
+  width: 100px;
+  margin: 5px;
+}
+
+/* Befofre Eye Tracking */
+.container button {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 25px;
+}
+.btn-eye{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 30px;
+  font-size: 20px;
+    padding: 8px 8px;
+}
+.before-eye{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+}
+
+.before-eye h1{
+  margin-bottom: 20px;
+}
+
+.before-eye p{
+  margin-bottom: 30px;
+  font-size: 25px;
+}
+
