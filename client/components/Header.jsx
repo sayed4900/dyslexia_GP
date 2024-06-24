@@ -11,7 +11,7 @@ const Header = () => {
       </div>
       <div className="icons">
         <img src="../public/imgs/home.png" alt="home" />
-        <img src="../public/imgs/games.png" alt="" />
+        <img src="../public/imgs/games.png" alt="games" />
         <Link to={'/tests'}>
           <img src="../public/imgs/tests.png" alt="icon4" />
         </Link>

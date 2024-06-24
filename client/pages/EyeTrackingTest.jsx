@@ -5,17 +5,20 @@ import '../src/style.css';
 import '../components/EyeTracking.css';
 import Header from '../components/Header';
 import { baseUrl } from '../src/utils/services';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const EyeTrackingTest = () => {
   const [eyeTest, setEyeTest] = useState({});
-  const [timeLeft, setTimeLeft] = useState(0);
   const [showEyeTracking, setShowEyeTracking] = useState(false);
   const [capturing, setCapturing] = useState(false);
   const [screenshots, setScreenshots] = useState([]);
   const [cameraAllowed, setCameraAllowed] = useState(false);
+    const [directions, setDirections] = useState("");
+
 
   const webcamRef = useRef(null);
+  const navigate = useNavigate();
 
   const captureScreenshot = async () => {
     if (webcamRef.current) {
@@ -30,6 +33,7 @@ const EyeTrackingTest = () => {
       try {
         const res = await axios.get(`${baseUrl}/eye/`);
         setEyeTest(res.data.eye[0]);
+        console.log(res.data.eye[0])
       } catch (error) {
         console.log(error);
       }
@@ -37,17 +41,59 @@ const EyeTrackingTest = () => {
     getEyeTest();
   }, []);
 
-  useEffect(() => {
+    const dataURLtoFile = (dataurl, filename) => {
+    const arr = dataurl.split(',');
+    const mime = arr[0].match(/:(.*?);/)[1];
+    const bstr = atob(arr[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([u8arr], filename, { type: mime });
+  };
+
+  const handleSubmit = async (file) => {
+    const formData = new FormData();
+    formData.append('image', file);
+
+    try {
+      const response = await axios.post('http://localhost:4000/predict-eye', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      setDirections(...directions,response.data.direction);
+    } catch (error) {
+      console.error('Error uploading the image:', error);
+    }
+  };
+
+    useEffect(() => {
     let interval;
     if (capturing) {
       interval = setInterval(() => {
         captureScreenshot();
-      }, eyeTest.screenPerSecond*1000);
+      }, eyeTest.screenPerSecond * 1000);
+
+      setTimeout(async () => {
+        setCapturing(false);
+        // Convert screenshots to files and submit each
+        for (let i = 0; i < screenshots.length; i++) {
+          const file = dataURLtoFile(screenshots[i], `screenshot-${i}.png`);
+          await handleSubmit(file);
+        }
+        navigate('/'); // Replace '/new-route' with your desired route
+      }, eyeTest.timerSeconds * 1000); // Stop capturing and navigate after the specified duration
     } else {
       clearInterval(interval);
     }
+
     return () => clearInterval(interval);
-  }, [capturing]);
+  }, [capturing, screenshots]);
+
+   
 
   const handleContinue = () => {
     setShowEyeTracking(true);

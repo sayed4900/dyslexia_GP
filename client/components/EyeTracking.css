@@ -5,6 +5,19 @@
   margin: auto;
   text-align: center;
 }
+/* .hidden-camera{
+  display: none;
+} */
+/* EyeTracking.css */
+.hidden-camera {
+  position: absolute;
+  z-index: -899;
+  opacity: 0;
+  /* width: 1px; */
+  /* height: 1px; */
+  /* left: -9999px;
+  top: -9999px; */
+}
 
 .eye-text{
   font-size: 20px;

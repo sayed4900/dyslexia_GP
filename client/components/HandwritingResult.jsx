@@ -69,7 +69,7 @@ const HandwritingResult = () => {
       console.log(audioText)
       let result = "Normal";
       if (res.data.parsedText !== audioText)
-        result = "NotNormal"
+        result = "Not Normal"
 
       setIsLoadingResult(false);
       navigate('/result', { state: { parsedText: res.data.parsedText,audioText,testType:"Handwriting",result } });
@@ -82,7 +82,7 @@ const HandwritingResult = () => {
 
   return (
     <div className='container'>
-      <Header/>
+      <Header />
       <div className="upload-container">
         <h1>Handwriting Test</h1>
         {imgUrl ? (

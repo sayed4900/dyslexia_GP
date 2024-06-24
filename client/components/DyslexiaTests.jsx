@@ -6,10 +6,10 @@ import Header from './Header';
 const DyslexiaTests = () => {
   const tests = [
     { name: 'Handwriting', testLink:"hand-writing", color: '#1E88E5' },
-    { name: 'Eye Tracking', color: '#AB47BC' },
+    { name: 'Eye Tracking',testLink:"eye-tracking", color: '#AB47BC' },
     { name: 'EEG-Based Brain Activity', color: '#8E24AA' },
     { name: 'MRI-Based Brain Imaging', color: '#00ACC1' },
-    { name: 'Other Behavioral /Cognitive Tests', color: '#FFB300' },
+    { name: 'Other Behavioral /Cognitive Tests',testLink:"statistics", color: '#FFB300' },
   ];
 
     const navigate = useNavigate();
