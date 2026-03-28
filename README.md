@@ -16,4 +16,4 @@ The platform is split into three main parts:
 |-----------|------------|------------|
 | **Node.js Backend** | Express, MongoDB, JWT | [GP_node_server](https://github.com/sayed4900/GP_node_server) |
 | **Flask Eye‑Tracking Server** | Flask, TensorFlow, Keras | [GP_flask_server](https://github.com/sayed4900/GP_flask_server) |
-| **Frontend Client** | (Your frontend code) | Located in the `client/` folder |
+| **Frontend Client** | React.js | Located in the `client/` folder |
