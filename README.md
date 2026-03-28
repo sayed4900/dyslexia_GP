@@ -17,12 +17,3 @@ The platform is split into three main parts:
 | **Node.js Backend** | Express, MongoDB, JWT | [GP_node_server](https://github.com/sayed4900/GP_node_server) |
 | **Flask Eye‑Tracking Server** | Flask, TensorFlow, Keras | [GP_flask_server](https://github.com/sayed4900/GP_flask_server) |
 | **Frontend Client** | (Your frontend code) | Located in the `client/` folder |
-
-## 📁 Project Structure
-
-lexia-learn/
-├── Backend Code/
-│ ├── server_node/ # Node.js backend (submodule)
-│ └── flask_server/ # Flask eye‑tracking server (submodule)
-├── client/ # Frontend application
-└── README.md # This file
